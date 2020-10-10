@@ -5,6 +5,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define GetP(node) ((node == NULL) ? NULL : node->parent)
+#define GetGP(node) GetP(GetP(node))
+#define GetS(node) \
+	(GetP(node) ? \
+	((node == (GetP(node)->left)) ? \
+	(GetP(node)->right) : \
+	(GetP(node)->left)) : \
+	NULL)
+#define GetU(node) GetS(GetP(node))
+
 /**
  * enum rb_color_e - Possible color of a Red-Black tree
  *
@@ -44,5 +54,8 @@ int rb_tree_is_valid(const rb_tree_t *tree);
 rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value);
 rb_tree_t *array_to_rb_tree(int *array, size_t size);
 rb_tree_t *rb_tree_remove(rb_tree_t *root, int n);
+rb_tree_t *insert_r(rb_tree_t *root, int value);
+void rotate(rb_tree_t *node, int sense);
+void fix_tree(rb_tree_t *node);
 
 #endif /* _RB_TREES_H_ */
