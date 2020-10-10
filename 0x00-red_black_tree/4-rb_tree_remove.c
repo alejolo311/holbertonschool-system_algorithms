@@ -22,7 +22,7 @@ rb_tree_t *rb_tree_remove(rb_tree_t *root, int n)
 	return (new);
 }
 /**
- * succesor - select the node that replace the deleted node
+ * _succesor - select the node that replace the deleted node
  * @node: node
  * Return: succesor
  */
@@ -56,7 +56,7 @@ rb_tree_t *sValue(rb_tree_t *root, int n)
 {
 	rb_tree_t *find = NULL;
 
-	if (root != NULL)
+	if (root == NULL)
 		return (NULL);
 
 	if (n < root->n)
