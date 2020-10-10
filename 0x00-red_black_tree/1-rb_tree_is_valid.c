@@ -56,22 +56,22 @@ int CheckColors(rb_tree_t *tree, int pColor, int b,
 	{
 		lnode = CheckColors(tree->left, (tree->color == RED) ? 1 : 0,
 			b, b_path + 1);
-		if (lnode == NULL)
+		if (lnode == 0)
 			return (0);
 		rnode = CheckColors(tree->right, (tree->color == RED) ? 1 : 0,
 			b, b_path + 1);
-		if (rnode == NULL)
+		if (rnode == 0)
 			return (0);
 	}
 	else
 	{
 		lnode = CheckColors(tree->left, (tree->color == RED) ? 1 : 0,
 			b, b_path);
-		if (lnode == NULL)
+		if (lnode == 0)
 			return (0);
 		rnode = CheckColors(tree->right, (tree->color == RED) ? 1 : 0,
 			b, b_path);
-		if (rnode == NULL)
+		if (rnode == 0)
 			return (0);
 	}
 	return (1);
