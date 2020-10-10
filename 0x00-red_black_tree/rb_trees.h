@@ -4,7 +4,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#define moveRed(sibling) \
+	((sibling->left && \
+	sibling->left == RED) || \
+	(sibling->right && \
+	sibling->right == RED))
+#define moveBlack(node, succesor) \
+	((succesor == NULL || \
+	succesor->color == BLACK) && \
+	(node->color == BLACK))
 #define GetP(node) ((node == NULL) ? NULL : node->parent)
 #define GetGP(node) GetP(GetP(node))
 #define GetS(node) \
@@ -14,6 +22,8 @@
 	(GetP(node)->left)) : \
 	NULL)
 #define GetU(node) GetS(GetP(node))
+
+
 
 /**
  * enum rb_color_e - Possible color of a Red-Black tree
@@ -57,5 +67,9 @@ rb_tree_t *rb_tree_remove(rb_tree_t *root, int n);
 rb_tree_t *insert_r(rb_tree_t *root, int value);
 void rotate(rb_tree_t *node, int sense);
 void fix_tree(rb_tree_t *node);
+rb_tree_t *_succesor(rb_tree_t *node);
+rb_tree_t *sValue(rb_tree_t *root, int n);
+void move_red(rb_tree_t *sibling, rb_tree_t *parent);
+rb_tree_t *delete(rb_tree_t *node);
 
 #endif /* _RB_TREES_H_ */
