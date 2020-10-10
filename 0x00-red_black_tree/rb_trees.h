@@ -1,5 +1,6 @@
-#ifndef RED_BLACK_TREES_H
-#define RED_BLACK_TREES_H
+#ifndef _RB_TREES_H_
+#define _RB_TREES_H_
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,4 +43,4 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value);
 rb_tree_t *array_to_rb_tree(int *array, size_t size);
 rb_tree_t *rb_tree_remove(rb_tree_t *root, int n);
 
-#endif /* RED_BLACK_TREES_H */
+#endif /* _RB_TREES_H_ */
