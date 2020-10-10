@@ -1,5 +1,4 @@
 #include "rb_trees.h"
-
 /**
 * rb_tree_node - CREATE A NEW NODE
 * @parent: the parent
@@ -12,7 +11,7 @@ rb_tree_t *rb_tree_node(rb_tree_t *parent, int value, rb_color_t color)
 	rb_tree_t *new = NULL;
 
 	new = malloc(sizeof(rb_tree_t));
-	if (new != NULL)
+	if (new == NULL)
 		return (NULL);
 
 	new->parent = parent;
