@@ -34,6 +34,10 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 	vertex->content = strcpy(new_str, str);
 	vertex->index = graph->nb_vertices;
 	vertex->nb_edges = 0, vertex->edges = NULL;
+
+	if (!vertex)
+		return (NULL);
+
 	if (vertex_head)
 		vertex_head->next = vertex;
 	else
