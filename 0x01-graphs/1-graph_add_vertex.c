@@ -7,12 +7,13 @@
  */
 vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 {
-	vertex_t *vertex, *vertex_head;
+	vertex_t  *vertex, *vertex_head;
+	char *new_str;
 
 	if (graph == NULL || str == NULL)
 		return (NULL);
 	vertex_head = graph->vertices;
-	while (vertex_head != NULL)
+	while (vertex_head)
 	{
 		if (strcmp(str, vertex_head->content) == 0)
 			return (NULL);
@@ -24,11 +25,15 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 	vertex = malloc(sizeof(vertex_t));
 	if (vertex == NULL)
 		return (NULL);
-
-	vertex->content = strdup(str);
+	new_str = malloc(sizeof(char) * (strlen(str) + 1));
+	if (new_str == NULL)
+	{
+		free(vertex);
+		return (NULL);
+	}
+	vertex->content = strcpy(new_str, str);
 	vertex->index = graph->nb_vertices;
 	vertex->nb_edges = 0, vertex->edges = NULL;
-
 	if (vertex_head)
 		vertex_head->next = vertex;
 	else
