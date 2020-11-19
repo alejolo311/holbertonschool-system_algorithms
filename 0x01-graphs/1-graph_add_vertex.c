@@ -7,8 +7,8 @@
  */
 vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 {
-	vertex_t  *vertex, *vertex_head;
-	char *new_str;
+	vertex_t  *vertex = NULL, *vertex_head = NULL;
+	char *new_str = NULL;
 
 	if (graph == NULL || str == NULL)
 		return (NULL);
